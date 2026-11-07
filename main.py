@@ -2,12 +2,9 @@
 import cv2
 import easyocr
 import pyttsx3
-
-# Initialize the OCR reader and speech engine once
 reader = easyocr.Reader(["en"], gpu=False)
 engine = pyttsx3.init()
 
-# Open laptop camera
 camera = cv2.VideoCapture(0)
 
 print("Press SPACE to capture and read.")
@@ -22,7 +19,6 @@ while camera.isOpened():
     key = cv2.waitKey(1) & 0xFF
  
     if key == ord(" "):
-        # Convert captured image to text
         results = reader.readtext(frame, detail=0)
         text = " ".join(results).strip()
 
